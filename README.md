@@ -1,22 +1,16 @@
 # Laravel 5 Feeds
 
-[![Latest Stable Version](https://poser.pugx.org/willvincent/feeds/v/stable.svg)](https://packagist.org/packages/willvincent/feeds)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/9098208d-abd1-44ea-af47-a0c42a01cb75.svg?style=flat-square)](https://insight.sensiolabs.com/projects/9098208d-abd1-44ea-af47-a0c42a01cb75)
-[![License](https://poser.pugx.org/willvincent/feeds/license.svg)](https://packagist.org/packages/willvincent/feeds)
-
-[![Total Downloads](https://poser.pugx.org/willvincent/feeds/downloads.svg)](https://packagist.org/packages/willvincent/feeds) [![Monthly Downloads](https://poser.pugx.org/willvincent/feeds/d/monthly.png)](https://packagist.org/packages/willvincent/feeds) [![Daily Downloads](https://poser.pugx.org/willvincent/feeds/d/daily.png)](https://packagist.org/packages/willvincent/feeds)
-
 A simple [Laravel 5](http://www.laravel.com/) service provider for including the [SimplePie](http://www.simplepie.org) library.
 
 ## Installation
 
 The Laravel 5 Feeds Service Provider can be installed via [Composer](http://getcomposer.org) by requiring the
-`willvincent/feeds` package in your project's `composer.json`.
+`dkrasov/feeds` package in your project's `composer.json`.
 
 ```json
 {
     "require": {
-        "willvincent/feeds": "1.1.*"
+        "dkrasov/feeds": "1.2.*"
     }
 }
 ```
@@ -32,7 +26,7 @@ Find the `providers` key in your `config/app.php` and register the Service Provi
 ```php
     'providers' => [
         // ...
-        willvincent\Feeds\FeedsServiceProvider::class,
+        Krasov\Feeds\FeedsServiceProvider::class,
     ],
 ```
 
@@ -40,13 +34,13 @@ Find the `aliases` key in your `config/app.php` and register the Facade.
 ```php
     'aliases' => [
         // ...
-        'Feeds'    => willvincent\Feeds\Facades\FeedsFacade::class,
+        'Feeds'    => Krasov\Feeds\Facades\FeedsFacade::class,
     ],
 ```
 
 ## Usage
 
-Run `php artisan vendor:publish --provider="willvincent\Feeds\FeedsServiceProvider"` to publish the default config file, edit caching setting withing the resulting `config/feeds.php` file as desired.
+Run `php artisan vendor:publish --provider="Krasov\Feeds\FeedsServiceProvider"` to publish the default config file, edit caching setting withing the resulting `config/feeds.php` file as desired.
 
 See [SimplePie Documentation](http://simplepie.org/wiki/) for full API usage documentation.
 
