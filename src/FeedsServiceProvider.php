@@ -1,22 +1,23 @@
-<?php namespace willvincent\Feeds;
+<?php
+declare(strict_types = 1);
+
+namespace Krasov\Feeds;
 
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class FeedsServiceProvider
+ *
+ * @package Krasov\Feeds
+ */
 class FeedsServiceProvider extends ServiceProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = true;
-
     /**
      * Bootstrap any application services.
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->publishes([
             __DIR__ . '/config/feeds.php' => config_path('feeds.php'),
@@ -28,9 +29,9 @@ class FeedsServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        $this->app->singleton('Feeds', function () {
+        $this->app->singleton('Feeds', static function (): FeedsFactory {
             $config = config('feeds');
 
             if (! $config) {
@@ -46,7 +47,7 @@ class FeedsServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides()
+    public function provides(): array
     {
         return ['Feeds'];
     }

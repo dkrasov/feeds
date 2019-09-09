@@ -1,8 +1,16 @@
-<?php namespace willvincent\Feeds;
+<?php
+declare(strict_types = 1);
+
+namespace Krasov\Feeds;
 
 use Illuminate\Support\Arr;
 use SimplePie;
 
+/**
+ * Class FeedsFactory
+ *
+ * @package Krasov\Feeds
+ */
 class FeedsFactory
 {
     /**
@@ -29,12 +37,13 @@ class FeedsFactory
 
     /**
      * @param array $feedUrl RSS URL
-     * @param int   $limit    items returned per-feed with multifeeds
-     * @param bool  $forceFeed
-     * @param null  $options
-     * @return simplePie
+     * @param int $limit items returned per-feed with multifeeds
+     * @param bool $forceFeed
+     * @param null $options
+     *
+     * @return SimplePie
      */
-    public function make($feedUrl = [], $limit = 0, $forceFeed = false, $options = null)
+    public function make($feedUrl = [], $limit = 0, $forceFeed = false, $options = null): SimplePie
     {
         $this->simplePie = new SimplePie();
         $this->configure();
@@ -47,13 +56,13 @@ class FeedsFactory
 
         $stripHtmlTags = Arr::get($this->config, 'strip_html_tags.disabled', false);
 
-        if (! $stripHtmlTags && ! empty($this->config['strip_html_tags.tags']) && is_array($this->config['strip_html_tags.tags'])) {
+        if (!$stripHtmlTags && !empty($this->config['strip_html_tags.tags']) && is_array($this->config['strip_html_tags.tags'])) {
             $this->simplePie->strip_htmltags($this->config['strip_html_tags.tags']);
         } else {
             $this->simplePie->strip_htmltags(false);
         }
 
-        if (! $stripHtmlTags && ! empty($this->config['strip_attribute.tags']) && is_array($this->config['strip_attribute.tags'])) {
+        if (!$stripHtmlTags && !empty($this->config['strip_attribute.tags']) && is_array($this->config['strip_attribute.tags'])) {
             $this->simplePie->strip_attributes($this->config['strip_attribute.tags']);
         } else {
             $this->simplePie->strip_attributes(false);
@@ -91,7 +100,7 @@ class FeedsFactory
      *
      * @return void
      */
-    protected function configure()
+    protected function configure(): void
     {
         $curlOptions = [];
 

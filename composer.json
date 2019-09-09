@@ -1,31 +1,31 @@
 {
-    "name": "willvincent/feeds",
+    "name": "dkrasov/feeds",
     "description": "Laravel 5 Service Provider for the SimplePie library",
     "license": "MIT",
     "authors": [
         {
-            "name": "Will Vincent",
-            "email": "tcindie@gmail.com"
+            "name": "Dmytro Krasov",
+            "email": "dskrasov@gmail.com"
         }
     ],
     "require": {
-        "php": ">=5.4.0",
+        "php": "^7.2",
         "illuminate/support": "6.0.*",
         "simplepie/simplepie": "1.5.*",
         "ext-curl": "*"
     },
     "autoload": {
         "psr-4": {
-            "willvincent\\Feeds\\": "src/"
+            "Krasov\\Feeds\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "willvincent\\Feeds\\FeedsServiceProvider"
+                "Krasov\\Feeds\\FeedsServiceProvider"
             ],
             "aliases": {
-                "Feeds": "willvincent\\Feeds\\Facades\\FeedsFacade"
+                "Feeds": "Krasov\\Feeds\\Facades\\FeedsFacade"
             }
         }
     }
